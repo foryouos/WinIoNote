@@ -89,9 +89,9 @@ bool GetDriverPath()
 	//定义的驱动文件的名称，在此处写时了，也就意味着，sys驱动文件必须为如下名称
 	// 如果需要请更改如下 sys文件名称，并修改加载时的同级文件名称
 	if (g_Is64BitOS)
-		wcscat(szWinIoDriverPath, L"GENIO64.sys");
+		wcscat(szWinIoDriverPath, L"WinIoNote64.sys");
 	else
-		wcscat(szWinIoDriverPath, L"GENIO32.sys");
+		wcscat(szWinIoDriverPath, L"WinIoNote64.sys");
 
 	return true;
 }
@@ -104,7 +104,7 @@ bool __stdcall InitializeWinIo()
 
 	g_Is64BitOS = Is64BitOS();
 
-	hDriver = CreateFile(L"\\\\.\\GENIO",
+	hDriver = CreateFile(L"\\\\.\\WinIoNote",
 		GENERIC_READ | GENERIC_WRITE,
 		0,
 		NULL,
@@ -129,7 +129,7 @@ bool __stdcall InitializeWinIo()
 		if (!bResult)
 			return false;
 		// 打开设备驱动程序
-		hDriver = CreateFile(L"\\\\.\\GENIO", //驱动程序路径
+		hDriver = CreateFile(L"\\\\.\\WinIoNote", //驱动程序路径
 			GENERIC_READ | GENERIC_WRITE, // 访问权限 ：读写
 			FILE_SHARE_READ | FILE_SHARE_WRITE, //共享读写权限运行其它进程打开该设备共享权限 
 			NULL,

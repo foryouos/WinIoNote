@@ -37,7 +37,7 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject,
 
 	KdPrint(("Entering DriverEntry"));
 
-	RtlInitUnicodeString(&DeviceNameUnicodeString, L"\\Device\\GENIO");
+	RtlInitUnicodeString(&DeviceNameUnicodeString, L"\\Device\\WinIoNote");
 
 	// Create a device object  在新系统中，如果出现IO被拦截的问题，可以修改上诉Object的名称，重新签名避免被拦截
 
@@ -62,7 +62,7 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject,
 		// Create a symbolic link, e.g. a name that a Win32 app can specify
 		// to open the device.
 
-		RtlInitUnicodeString(&DeviceLinkUnicodeString, L"\\DosDevices\\GENIO");
+		RtlInitUnicodeString(&DeviceLinkUnicodeString, L"\\DosDevices\\WinIoNote");
 		// 在设备对象名称和设备的用户可见名称之间设置符号连接
 		ntStatus = IoCreateSymbolicLink(&DeviceLinkUnicodeString,
 			&DeviceNameUnicodeString);
@@ -319,7 +319,7 @@ void WinIoUnload(IN PDRIVER_OBJECT DriverObject)
 
 	KdPrint(("Entering WinIoUnload"));
 	// 
-	RtlInitUnicodeString(&DeviceLinkUnicodeString, L"\\DosDevices\\GENIO");
+	RtlInitUnicodeString(&DeviceLinkUnicodeString, L"\\DosDevices\\WinIoNote");
 
 	ntStatus = IoDeleteSymbolicLink(&DeviceLinkUnicodeString);
 

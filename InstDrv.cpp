@@ -24,8 +24,8 @@ bool _stdcall InstallWinIoDriver(PWSTR pszWinIoDriverPath, bool IsDemandLoaded)
 	{
 		// Install the driver 创建新服务，(驱动程序)
 		hService = CreateService(hSCManager, //服务控制管理器句柄
-			L"GENIO", //服务的名称
-			L"GENIO", //服务的显示名称
+			L"WinIoNote", //服务的名称
+			L"WinIoNote", //服务的显示名称
 			SERVICE_ALL_ACCESS,//对服务的所有访问权限
 			SERVICE_KERNEL_DRIVER, // 指定服务类型为内核驱动程序
 			(IsDemandLoaded == true) ? SERVICE_DEMAND_START : SERVICE_SYSTEM_START,//确认启动类型
@@ -69,7 +69,7 @@ bool _stdcall RemoveWinIoDriver()
 		return false;
 	}
 
-	hService = OpenService(hSCManager, L"GENIO", SERVICE_ALL_ACCESS);
+	hService = OpenService(hSCManager, L"WinIoNote", SERVICE_ALL_ACCESS);
 	CloseServiceHandle(hSCManager);
 
 	if (!hService)
@@ -116,7 +116,7 @@ bool _stdcall StartWinIoDriver()
 	if (hSCManager)
 	{
 		//打开服务
-		hService = OpenService(hSCManager, L"GENIO", SERVICE_ALL_ACCESS);
+		hService = OpenService(hSCManager, L"WinIoNote", SERVICE_ALL_ACCESS);
 
 		CloseServiceHandle(hSCManager);
 
@@ -147,7 +147,7 @@ bool _stdcall StopWinIoDriver()
 
 	if (hSCManager)
 	{
-		hService = OpenService(hSCManager, L"GENIO", SERVICE_ALL_ACCESS);
+		hService = OpenService(hSCManager, L"WinIoNote", SERVICE_ALL_ACCESS);
 
 		CloseServiceHandle(hSCManager);
 
