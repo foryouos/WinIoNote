@@ -1,0 +1,3 @@
+// rc文件内容
+IDI_ICON1 ICON DISCARDABLE "./RB.ico" 
+1 24 DISCARDABLE "getAdmin.manifest"
