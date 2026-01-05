@@ -42,10 +42,10 @@
 
 x64/*
 x86/*
-TestDogWinIO/x64/*
-TestDogWinIO/x86/*
+TestWinIoNote/x64/*
+TestWinIoNote/x86/*
 Backup/*
-RealBomSys/x64/*
-RealBomSys/x86/*
+WinIoNoteSys/x64/*
+WinIoNoteSys/x64/*
 *.vs/*
 
